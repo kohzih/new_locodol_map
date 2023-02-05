@@ -85,7 +85,7 @@ TwitterのAPIを利用し、バッチ処理で一覧を作成し、定期的に�
 
 ### ER図
 
-![ER図](https://i.gyazo.com/e4c98bf2be91a882a28223b30ddd017f.jpg)
+![ER図](https://i.gyazo.com/370d806b63f8d5920d7df90b5fd38d18.jpg)
 
 #### Idols
 
@@ -123,6 +123,10 @@ Twitterから自動収集、または、ユーザから申請のあったロー�
 - user_id
   - バッチ申請の場合は管理者のuser_idが設定
   - ユーザー申請の場合は申請者のuser_idを設定
+- account_status
+  - 0: 判定待ち
+  - 1: ローカルアイドル
+  - 2: アイドルではない
 - twitter_account
 - twitter_profile
 - twitter_avatar
@@ -131,13 +135,6 @@ Twitterから自動収集、または、ユーザから申請のあったロー�
 - instagram_account
 - youtube_account
 - facebook_account
-
-#### Excluded_idols
-
-アイドルではないため、除外したTwitterアカウントを格納する。
-
-- twitter_account
-- prefecture_id
 
 #### Users
 
@@ -197,9 +194,9 @@ Twitterから自動収集、または、ユーザから申請のあったロー�
   - 2: Instagram
 - embed_link
 
-#### Activity_reports
+#### Event_infos
 
-公式サイト・SNSの更新や、公演情報のメール通知用。各ユーザに通知後、削除する。
+公式サイト・SNSの更新や、公演情報のメール通知用。各ユーザに通知後、notice_statusを1に更新する。
 
 - idol_id
 - notice_type
@@ -207,6 +204,9 @@ Twitterから自動収集、または、ユーザから申請のあったロー�
   - 1: twitter
   - 2: instagram
   - 3: event
+- notice_status
+  - 0: 未通知
+  - 1: 通知済
 - body
 
 ## なぜこのサービスを作りたいのか？
