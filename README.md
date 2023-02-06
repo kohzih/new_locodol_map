@@ -85,7 +85,7 @@ TwitterのAPIを利用し、バッチ処理で一覧を作成し、定期的に�
 
 ### ER図
 
-![ER図](https://i.gyazo.com/e4c98bf2be91a882a28223b30ddd017f.jpg)
+![ER図](https://i.gyazo.com/c487773233a7ff45f5d98e08e0921c39.jpg)
 
 #### Idols
 
