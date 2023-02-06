@@ -85,7 +85,7 @@ TwitterのAPIを利用し、バッチ処理で一覧を作成し、定期的に�
 
 ### ER図
 
-![ER図](https://i.gyazo.com/370d806b63f8d5920d7df90b5fd38d18.jpg)
+![ER図](https://i.gyazo.com/e4c98bf2be91a882a28223b30ddd017f.jpg)
 
 #### Idols
 
@@ -102,14 +102,7 @@ TwitterのAPIを利用し、バッチ処理で一覧を作成し、定期的に�
 - activity_status
   - 0: 活動中
   - 1: 解散または活動休止(一覧に表示しない)
-- twitter_account
-- twitter_profile
-- twitter_avatar
-- twitter_followers
-- website
-- instagram_account
-- youtube_account
-- facebook_account
+- sns_account_id
 
 #### Idol_candidates
 
@@ -127,14 +120,7 @@ Twitterから自動収集、または、ユーザから申請のあったロー�
   - 0: 判定待ち
   - 1: ローカルアイドル
   - 2: アイドルではない
-- twitter_account
-- twitter_profile
-- twitter_avatar
-- twitter_followers
-- website
-- instagram_account
-- youtube_account
-- facebook_account
+- sns_account_id
 
 #### Users
 
@@ -196,7 +182,7 @@ Twitterから自動収集、または、ユーザから申請のあったロー�
 
 #### Event_infos
 
-公式サイト・SNSの更新や、公演情報のメール通知用。各ユーザに通知後、notice_statusを1に更新する。
+公式サイト・SNSの更新や、公演情報のメール通知用。各ユーザに通知後、削除する。
 
 - idol_id
 - notice_type
@@ -208,6 +194,26 @@ Twitterから自動収集、または、ユーザから申請のあったロー�
   - 0: 未通知
   - 1: 通知済
 - body
+
+#### Sns_accounts
+
+アイドルのSNSアカウント格納用。
+
+- idol_id
+- idol_candidate_id
+- idol_type
+  - 0: アイドル
+  - 1: アイドル候補
+- sns_type
+  - 0: twitte
+  - 1: website
+  - 2: instagram
+  - 3: youtube
+  - 4: facebook
+- account
+- profile
+- avatar
+- followers
 
 ## なぜこのサービスを作りたいのか？
 
