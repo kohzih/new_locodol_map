@@ -85,7 +85,7 @@ TwitterのAPIを利用し、バッチ処理で一覧を作成し、定期的に�
 
 ### ER図
 
-![ER図](https://i.gyazo.com/c487773233a7ff45f5d98e08e0921c39.jpg)
+![ER図](https://i.gyazo.com/ac3908fd7bfd11c65a7086b7438299c2.jpg)
 
 #### Idols
 
@@ -199,11 +199,10 @@ Twitterから自動収集、または、ユーザから申請のあったロー�
 
 アイドルのSNSアカウント格納用。
 
-- idol_id
-- idol_candidate_id
-- idol_type
-  - 0: アイドル
-  - 1: アイドル候補
+- idlable_id
+- idlable_type
+  - 'Idols'
+  - 'Idol_candidates'
 - sns_type
   - 0: twitte
   - 1: website
