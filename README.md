@@ -83,6 +83,137 @@ TwitterのAPIを利用し、バッチ処理で一覧を作成し、定期的に�
 
 [新ロコドルマップ(仮)](https://www.figma.com/file/wkNmtAAE9OChRcU5etwDHf/%E6%96%B0%E3%83%AD%E3%82%B3%E3%83%89%E3%83%AB%E3%83%9E%E3%83%83%E3%83%97(%E4%BB%AE)?t=SmvCbb6n9hPmcchK-1)
 
+### ER図
+
+![ER図](https://i.gyazo.com/ac3908fd7bfd11c65a7086b7438299c2.jpg)
+
+#### Idols
+
+ローカルアイドルの一覧。
+
+- name
+- prefecture_id
+- register_type
+  - 0: 自動登録
+  - 1: 手動登録
+- user_id
+  - 自動登録の場合は管理者のuser_idを設定
+  - ユーザー申請による手動登録の場合は申請者のuser_idを設定
+- activity_status
+  - 0: 活動中
+  - 1: 解散または活動休止(一覧に表示しない)
+- sns_account_id
+
+#### Idol_candidates
+
+Twitterから自動収集、または、ユーザから申請のあったローカルアイドル情報を格納する。
+
+- name
+- prefecture_id
+- request_type
+  - 0: バッチ申請
+  - 1: ユーザー申請
+- user_id
+  - バッチ申請の場合は管理者のuser_idが設定
+  - ユーザー申請の場合は申請者のuser_idを設定
+- account_status
+  - 0: 判定待ち
+  - 1: ローカルアイドル
+  - 2: アイドルではない
+- sns_account_id
+
+#### Users
+
+会員情報(管理者も含む)。
+
+- email
+- name
+- prefecture_id
+- role
+  - 0: 一般ユーザ
+  - 10: 管理者ユーザ
+- notice_website(メール通知)
+  - 0: なし
+  - 1: する
+- notice_twitter
+- notice_instagram
+- notice_event
+- last_login
+  - 最終ログイン日時
+- crypted_password
+- salt
+- reset_password_token
+- reset_password_token_expires_at
+- reset_password_email_sent_at
+- access_count_to_reset_password_page
+
+#### Prefectures
+
+都道府県名。
+
+- name
+
+#### Comments
+
+各アイドルに追加されたユーザからのコメント。
+
+- idol_id
+- user_id
+- body
+
+#### Bookmarks
+
+ユーザがお気に入りに追加したアイドルのリスト。
+
+- user_id
+- idol_id
+
+#### Embeds
+
+ユーザが各アイドルのページに埋め込んだSNSの投稿。
+
+- idol_id
+- user_id
+- embed_type
+  - 0: Youtube
+  - 1: Twitter
+  - 2: Instagram
+- embed_link
+
+#### Event_infos
+
+公式サイト・SNSの更新や、公演情報のメール通知用。各ユーザに通知後、削除する。
+
+- idol_id
+- notice_type
+  - 0: website
+  - 1: twitter
+  - 2: instagram
+  - 3: event
+- notice_status
+  - 0: 未通知
+  - 1: 通知済
+- body
+
+#### Sns_accounts
+
+アイドルのSNSアカウント格納用。
+
+- idlable_id
+- idlable_type
+  - 'Idols'
+  - 'Idol_candidates'
+- sns_type
+  - 0: twitte
+  - 1: website
+  - 2: instagram
+  - 3: youtube
+  - 4: facebook
+- account
+- profile
+- avatar
+- followers
+
 ## なぜこのサービスを作りたいのか？
 
 あまちゃんのブーム以降、ローカルアイドルの活動は興味のない人からすると見えづらくなっている。  
